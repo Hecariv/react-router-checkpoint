@@ -38,8 +38,10 @@ export class Signup extends Component {
       let newUser = {name, email, company, phone, password, address}
       console.log('newUser', newUser)
       this.props.userSignup(newUser)
+      this.props.history.push("/login")
     }
   }
+
 
   render() {
     return (
@@ -53,7 +55,7 @@ export class Signup extends Component {
               boxShadow: '3px 3px 47px 0px rgba(0,0,0,0.5)'
             }}
           >
-            <Form onSubmit={this.userSignup}>
+            <Form >
               <FormGroup>
                 <Label for="name">Name</Label>
                 <Input
@@ -148,7 +150,7 @@ export class Signup extends Component {
                   <Alert color="danger">Passwords do not match</Alert>
                 ) : null}
               </FormGroup>
-              <Button color="primary" type="submit">
+              <Button onClick={this.userSignup} color="primary" type="submit">
                 Submit
               </Button>
             </Form>
